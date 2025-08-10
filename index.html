@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        function getComputerChoice(){
+            num = getRandomInt(3);
+            str = "";
+            if(num === 0){
+                str = "Rock";
+            }
+            else if(num === 1){
+                str = "Paper";
+            }
+            else{
+                str = "Scissors";
+            }
+            return str;
+        }
+
+        function getHumanChoice(){
+            let input = prompt("Enter your choice: ");
+            return input;
+        }
+        humanScore = 0;
+        computerScore = 0;
+        
+        function playGame(){
+            function playRound(){
+            humanChoice = getHumanChoice();
+            computerChoice = getComputerChoice();
+            humanChoice = humanChoice.toLowerCase();
+            capital = humanChoice[0].toUpperCase();
+            humanChoice = capital + humanChoice.slice(1);
+            if(humanChoice == computerChoice){
+                console.log("It's a tie!");
+            }
+            else if((humanChoice == "Paper" && computerChoice == "Rock") ||
+                (humanChoice == "Rock" && computerChoice == "Scissors") ||
+                (humanChoice == "Scissors" && computerChoice == "Paper"))
+                {
+                console.log("You win! " + humanChoice + " beats " + computerChoice);
+                humanScore++;
+            }
+            else{
+                console.log("You lose! " + computerChoice + " beats " + humanChoice);
+                computerScore++;
+            }
+        }
+            for(let i = 0; i<5; i++){
+                playRound();
+            }
+            if(humanScore > computerScore){
+                console.log("Congratulations! You won the game!");
+            }
+            else{
+                console.log("You lost the game! Try again.");
+            }
+        }
+        playGame();
+    </script>
+</body>
+</html>
